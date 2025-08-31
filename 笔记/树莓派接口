@@ -47,5 +47,9 @@ apt install npm
 安装的 nvm, 然后通过 nvm 控制node 版本
 
 
+npm 初始化：
+    npm init
 
+安装 node 调用树莓派的模块
+    npm install serialport
 
