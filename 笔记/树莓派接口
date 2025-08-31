@@ -1,0 +1,51 @@
+
+树莓派版本：Pi Model 3B V1.2
+
+pinout  可以看板子引脚图
+
+/boot/config.txt 部分配置可以看部分配置
+
+通过查阅资料 知道 Model 3B V1.2 有两路串口
+PL011 UART(全功能串口)只能通过 GPIO 14 (TXD) 和 GPIO 15 (RXD)
+mini UART(简化版的串口)可以配置到其他IO引脚
+
+但是通过实践，只有 GPIO 14 (TXD) 和 GPIO 15 (RXD) 支持串口，也就是说虽然有两路串口，但是通过 GPIO 只能同时用一路
+
+所以这里舍弃了串口登录，使用 GPIO14 GPIO15 连接 AIR780
+
+
+
+
+
+可以执行下面命令通过串口和 AT 指令与 AIR780 进行通信：
+
+printf "AT\r" > /dev/ttyAMA0
+
+printf "AT+CMCF=1\r" > /dev/ttyAMA0
+
+printf "AT+CMGS=\"157xxxxxxxx\"\r" > /dev/ttyAMA0
+
+printf "HELLO" > /dev/ttyAMA0
+
+printf ”\x1A“ > /dev/ttyAMA0
+
+
+
+
+通过 apt 安装软件：
+
+apt install git
+
+apt install nodejs
+
+apt install npm
+
+但是 不推荐使用 apt 安装 nodejs 和 npm 版本太旧了
+
+使用 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
+
+安装的 nvm, 然后通过 nvm 控制node 版本
+
+
+
+

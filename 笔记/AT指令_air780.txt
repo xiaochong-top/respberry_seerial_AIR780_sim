@@ -1,0 +1,11 @@
+AT	换行符/r	握手，准备好了会返回OK
+AT+CSQ	换行符/r	信号强度 +CSQ: 31,0
+AT+CPIN?	换行符/r	卡片是否就绪 +CPIN: READY
+AT+CREG?	换行符/r	本地卡+CREG: 0,1
+
+
+发送短信：
+AT+CMGF=1	换行符/r	发送短信准备好了 OK
+AT+CMGS="13260316097"	换行符/r	发送给谁>
+内容
+(16进制)1A
